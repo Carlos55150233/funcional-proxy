@@ -228,9 +228,10 @@ def onmessage(update,bot:ObigramClient):
         thread = bot.this_thread
         username = update.message.sender.username
         tl_admin_user = os.environ.get('tl_admin_user')
-
+  
+        #Descomentar debajo solo si se ba a poner el usuario admin de telegram manual
         #set in debug
-        tl_admin_user = ''
+        tl_admin_user = '*'
 
         jdb = JsonDatabase('database')
         jdb.check_create()
@@ -596,20 +597,7 @@ def onmessage(update,bot:ObigramClient):
             url = msgText
             ddl(update,bot,message,url,file_name='',thread=thread,jdb=jdb)
         else:
-            #if update:
-            #    api_id = os.environ.get('api_id')
-            #    api_hash = os.environ.get('api_hash')
-            #    bot_token = os.environ.get('bot_token')
-            #    
-                # set in debug
-           
-            #    bot_token = ''
-
-            #    chat_id = int(update.message.chat.id)
-            #    message_id = int(update.message.message_id)
-            #    import asyncio
-            #    asyncio.run(tlmedia.download_media(api_id,api_hash,bot_token,chat_id,message_id))
-            #    return
+             
             bot.editMessageText(message,'😵No se pudo procesar😵')
     except Exception as ex:
            print(str(ex))
@@ -619,7 +607,7 @@ def main():
     bot_token = os.environ.get('bot_token')
 
     #set in debug
-    bot_token = ''
+    bot_token = '*'
 
     bot = ObigramClient(bot_token)
     bot.onMessage(onmessage)
