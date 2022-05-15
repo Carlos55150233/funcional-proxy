@@ -596,13 +596,10 @@ def onmessage(update,bot:ObigramClient):
         elif 'http' in msgText:
             url = msgText
             ddl(update,bot,message,url,file_name='',thread=thread,jdb=jdb)
-        else:
-             
+        else:            
             bot.editMessageText(message,'😵No se pudo procesar😵')
     except Exception as ex:
            print(str(ex))
-
-
 def main():
     bot_token = os.environ.get('bot_token')
 
